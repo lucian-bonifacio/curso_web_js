@@ -1,0 +1,1 @@
+paraObjeto(carrinho[0])
