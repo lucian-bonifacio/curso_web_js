@@ -1,4 +1,4 @@
-axios.get(url).then(response => {
+// axios.get(url).then(response => {
 //     const funcionarios = response.data
 //     // console.log(typeof funcionarios)
 //     // console.log(funcionarios)
