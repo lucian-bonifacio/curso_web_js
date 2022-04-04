@@ -14,12 +14,19 @@ este é o primeiro arquivo a ser buscado.
 */
 const express = require('express') // [2]
 
+
+
 /*
 [3] Neste caso eu estou INSTANCIANDO o express, ou seja, inicializando.
 Estou realizando esse processo e atribuindo a variável "app".
 através do app que vou colocar os meus serviços.
 */
 const app = express() // [3]
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const bancoDeDados = require('./bancoDeDados')
 
 /*
 [4] o "get" é uma forma de requisição. Neste caso, é um atributo/ método de express().
@@ -34,9 +41,20 @@ Como parâmetro para o ".send()" foi passado um objeto, que no final será trans
 em JSON.
 */
 app.get('/produtos', (req, res, next) => {
-    res.send({nome: 'Notebook', preco: 132.45}) // [4]
+    res.send( bancoDeDados.getProdutos()) // [4]
 })
 
+app.get('/produtos/:id', (req, res, next) => {
+    res.send(bancoDeDados.getProduto(req.params.id))
+})
+
+app.post('/produtos', (req, res, next) => {
+    const produto = bancoDeDados.salvarProduto({
+        nome: req.body.nome,
+        preco: req.body.preco
+    })
+    res.send(produto) // JSON
+})
 /*
 [5] Este atributo/ método "listen()" recebede dois parâmetros:
 o primeiro é a porta que será executado o processo.

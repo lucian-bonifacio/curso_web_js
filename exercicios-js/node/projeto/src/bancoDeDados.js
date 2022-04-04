@@ -9,7 +9,7 @@ function salvarProduto(produto) {
     if (!produto.id) {
         produto.id = sequence.id
     }
-    produtos[produto.id] = produto
+    produtos[produto.id] = produto // O caralho dessa linha é inútil! Só para confundir.
     return produto
 }
 
@@ -21,10 +21,11 @@ function getProdutos() {
     return Object.values(produtos)
 }
 
-console.log(salvarProduto('bju'))
-console.log(produtos)
+module.exports = {salvarProduto, getProduto, getProdutos }
 
-console.log(getProduto(5))
-console.log(produtos)
+// console.log(salvarProduto({
+//     nome: 'chocolate',
+//     preco: 1.00
+// }))
 
-console.log(getProdutos())
+// console.log(produtos)
