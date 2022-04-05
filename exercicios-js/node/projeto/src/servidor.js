@@ -62,5 +62,5 @@ O segundo é uma callback, que neste caso tem a única função de retornar um t
 OBS: Sempre é uma função, mesmo que seja para uma simples ação.
 */
 app.listen(porta, () => {
-    console.log(`Servidor executando na porta ${porta}.`) // [5]
+    console.log(`Servidor está executando na porta ${porta}.`) // [5]
 })
